@@ -21,6 +21,7 @@ app.get('/testing', (request, response) => {
 app.get('/location', (request, response) => {
   try{
     const locationData = searchToLatLong(request.query.data);
+    console.log(locationData);
     response.send(locationData);
   }
   catch (error){
@@ -37,11 +38,11 @@ app.get('/weather', (request, response) => {
   response.send('return the results here')
 });
 
-app.listen(PORT, () => console.log(`Listen on ort ${PORT}.`));
+app.listen(PORT, () => console.log(`Listen on Port ${PORT}.`));
 
 //Helper Functions
 function searchToLatLong(query) {
-  const geoData = require('./data/geo.jason');
+  const geoData = require('./data/geo.json');
   const location = new Location(geoData);
   console.log(location);
   return location;
